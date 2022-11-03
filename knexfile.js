@@ -5,21 +5,15 @@
  */
 module.exports = {
 
-  // development: {
-  //   client: 'sqlite3',
-  //   connection: {
-  //     filename: './dev.sqlite3'
-  //   }
-  // },
-
   development: {
     client: 'postgresql',
     connection: {
-      port: 5432,
+      port: 5433,
       database: 'radiance_api',
       user:     'postgres',
-      password: 'Hike9829'
+      password: 'Radiance2207'
     },
+  },
     pool: {
       min: 2,
       max: 10
@@ -27,7 +21,15 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations'
     }
-  },
+};
+
+ // development: {
+  //   client: 'sqlite3',
+  //   connection: {
+  //     filename: './dev.sqlite3'
+  //   }
+  // },
+
 
   // production: {
   //   client: 'postgresql',
@@ -45,4 +47,4 @@ module.exports = {
   //   }
   // }
 
-};
+
