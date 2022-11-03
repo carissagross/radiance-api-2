@@ -20,20 +20,68 @@ app.use(express.json());
 
 
 app.get('/api/v1/affirmations', async(req, res) => {
-    const affirmation_data = await knex.select().from('affirmations')
-    res.status(200).json(affirmation_data)
+    const affirmationData = await knex.select().from('affirmations')
+    res.status(200).json(affirmationData)
 });
 
 app.listen(3001, () => {
     console.log('Listening on port 3001')
 })
-//   const getAffirmationsById = (req, res) => {
-//     const id = parseInt(req.params.id);
-//     pool.query(queries.getAffirmationsById, [id], (error, results) => {
-//       if (error) throw error;
-//       res.status(200).json(results.rows);
-//     });
-//   };
+
+
+ app.get('/api/v1/affirmations/:id', (req, res) => {
+    knex('affirmations')
+    .where({ id:  parseInt(req.params.id) })
+    .then((data) => { res.json(data); })
+    .catch(() => { res.json('Something went wrong.') });
+   });
+  
+//    app.post('/affirmations', (req, res) => {
+//     console.log(req)
+//     knex('affirmations')
+//     .insert({
+//     description: req.body,
+//     image: req.body,
+//     })
+//     .then(() => { res.json('Affirmation added!'); })
+//     .catch(() => { res.json('Something went wrong.') });
+//    });
+
+// app.delete('/todos/:id', (req, res) => {
+//     knex('todos')
+//     .where({ id: parseInt(req.params.id) })
+//     .del()
+//     .then(() => { res.json('Todo deleted!'); })
+//     .catch(() => { res.json('Something went wrong.') });
+//    });
+
+
+
+
+
+
+    // const id = parseInt(req.params.id);
+    // const match = knex.select().from('affirmations').find(idea => idea.id == id);
+    // const match = knex.select().from("affirmations").where("id", id);
+    // if (!match) return res.status(404).json({message: `No idea found with an id of ${id}`});
+  
+    // return res.status(200).json(match);
+    // });f
+
+
+
+
+
+
+//   app.get('api//affirmations', (req, res) => {
+  
+    //       const allAffirmations =  pool.query('SELECT * FROM affirmation')
+    //       res.json(app.locals.affirmations)
+    //   {
+    //       console.log(err.message)
+    //   }
+
+
   
 //   const addAffirmations = (req, res) => {
 //     const { description, image } = req.body;
