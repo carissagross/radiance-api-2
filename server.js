@@ -18,7 +18,6 @@ app.use(express.json());
 
 // routes
 
-
 app.get('/api/v1/affirmations', async(req, res) => {
     const affirmationData = await knex.select().from('affirmations')
     res.status(200).json(affirmationData)
@@ -35,7 +34,27 @@ app.listen(3001, () => {
     .then((data) => { res.json(data); })
     .catch(() => { res.json('Something went wrong.') });
    });
+
+
+   app.post('/api/v1/affirmations', async (request, response) => {
+    const paper = request.body;
   
+    for (let requiredParameter of ['description', 'image']) {
+      if (!paper[requiredParameter]) {
+        return response
+          .status(422)
+          .send({ error: `Expected format: { description: <String>, image: <String> }. You're missing a "${requiredParameter}" property.` });
+      }
+    }
+  
+    try {
+      const id = await knex.select().from('affirmations').insert(paper, 'id');
+      response.status(201).json({ id })
+    } catch (error) {
+      response.status(500).json({ error });
+    }
+  });
+
 //    app.post('/affirmations', (req, res) => {
 //     console.log(req)
 //     knex('affirmations')
