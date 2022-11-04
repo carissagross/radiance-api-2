@@ -17,6 +17,12 @@ app.set('port', port)
 app.use(cors())
 app.use(express.json());
 
+app.get('/', (request, response) => {
+  response.status(200).json({
+    smoke: 'test'
+  })
+})
+
 app.get('/api/v1/affirmations', async(req, res) => {
     const affirmationData = await knex.select().from('affirmations')
     res.status(200).json(affirmationData)
