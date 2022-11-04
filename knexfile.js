@@ -11,7 +11,7 @@ module.exports = {
       port: 5432,
       database: 'radiance_api',
       user:     'postgres',
-      password: '220722'
+      password: 'Hike9829'
     },
   },
     pool: {
