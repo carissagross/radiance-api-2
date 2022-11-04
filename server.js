@@ -18,7 +18,6 @@ app.use(express.json());
 
 // routes
 
-
 app.get('/api/v1/affirmations', async(req, res) => {
     const affirmationData = await knex.select().from('affirmations')
     res.status(200).json(affirmationData)
@@ -27,15 +26,12 @@ app.get('/api/v1/affirmations', async(req, res) => {
 app.listen(3001, () => {
     console.log('Listening on port 3001')
 })
-
-
  app.get('/api/v1/affirmations/:id', (req, res) => {
     knex('affirmations')
     .where({ id:  parseInt(req.params.id) })
     .then((data) => { res.json(data); })
     .catch(() => { res.json('Something went wrong.') });
    });
-
 
    app.post('/api/v1/affirmations', async (request, response) => {
     const paper = request.body;
@@ -76,17 +72,6 @@ app.listen(3001, () => {
 //   });
 
 
-
-
-
-
-
-
-
-
-
-
-
 //    app.post('/affirmations', (req, res) => {
 //     console.log(req)
 //     knex('affirmations')
@@ -105,10 +90,6 @@ app.listen(3001, () => {
 //     .then(() => { res.json('Todo deleted!'); })
 //     .catch(() => { res.json('Something went wrong.') });
 //    });
-
-
-
-
 
 
     // const id = parseInt(req.params.id);

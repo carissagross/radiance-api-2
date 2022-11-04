@@ -8,10 +8,10 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      port: 5433,
+      port: 5432,
       database: 'radiance_api',
       user:     'postgres',
-      password: 'Radiance2207'
+      password: '220722'
     },
   },
     pool: {
