@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "radiance-api-2",
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.js" }
+  ]
+}
