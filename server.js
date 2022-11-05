@@ -23,7 +23,7 @@ app.get('/', (request, response) => {
   })
 })
 
-app.get('/api/v1/affirmations', (req, res) => {
+app.get('/affirmations', (req, res) => {
     const affirmationData = knex.select().from('affirmations')
     res.status(200).json(affirmationData)
     .catch(error => console.log(error))
