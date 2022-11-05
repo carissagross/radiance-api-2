@@ -15,7 +15,7 @@ app.set('port', port)
 
 //middleware
 app.use(cors())
-// app.use(express.json());
+app.use(express.json());
 
 app.get('/', (request, response) => {
   response.status(200).json({
@@ -23,10 +23,9 @@ app.get('/', (request, response) => {
   })
 })
 
-app.get('/affirmations', (req, res) => {
-    const affirmationData = knex.select().from('affirmations')
+app.get('/api/v1/affirmations', async(req, res) => {
+    const affirmationData = await knex.select().from('affirmations')
     res.status(200).json(affirmationData)
-    .catch(error => console.log(error))
 });
 
 // app.get('/api/v1/affirmations/:id', (req, res) => {
