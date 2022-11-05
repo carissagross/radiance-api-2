@@ -4,17 +4,18 @@ const cors = require('cors')
 const knex = require('./knex')
 // const { response } = require('express')
 
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3001;
 }
 
-app.listen(port)
-// app.set('port', process.env.PORT || 3001)
+// app.listen(port)
+app.set('port', port)
 
 //middleware
 app.use(cors())
-// app.use(express.json());
+app.use(express.json());
 
 app.get('/', (request, response) => {
   response.status(200).json({
