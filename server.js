@@ -4,13 +4,13 @@ const cors = require('cors')
 const knex = require('./knex')
 // const { response } = require('express')
 
-// let port = process.env.PORT;
-// if (port == null || port == "") {
-//   port = 3001;
-// }
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3001;
+}
 
-// app.listen(port)
-app.set('port', process.env.PORT || 3001)
+app.listen(port)
+// app.set('port', process.env.PORT || 3001)
 
 //middleware
 app.use(cors())
