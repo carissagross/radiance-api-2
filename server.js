@@ -28,12 +28,12 @@ app.get('/api/v1/affirmations', async(req, res) => {
     res.status(200).json(affirmationData)
 });
 
-// app.get('/api/v1/affirmations/:id', (req, res) => {
-//   knex('affirmations')
-//   .where({ id:  parseInt(req.params.id) })
-//   .then((data) => { res.json(data); })
-//   .catch(() => { res.json('Something went wrong.') });
-// });
+app.get('/api/v1/affirmations/:id', (req, res) => {
+  knex('affirmations')
+  .where({ id:  parseInt(req.params.id) })
+  .then((data) => { res.json(data); })
+  .catch(() => { res.json('Something went wrong.') });
+});
 
 // app.post('/api/v1/affirmations', async (request, response) => {
 //   const paper = request.body;
