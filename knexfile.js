@@ -10,41 +10,33 @@ module.exports = {
     connection: {
       port: 5432,
       database: 'radiance_api',
-      user:     'postgres',
-      password: '220722'
+      user:     process.env.DB_USER,
+      password: 'Hike9829'
     },
   },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
+    // pool: {
+    //   min: 2,
+    //   max: 10
+    // },
+    // migrations: {
+    //   tableName: 'knex_migrations'
+    // },
+    production: {
+      client: 'postgresql',
+      connection: {
+        connectionString: process.env.DATABASE_URL, 
+        ssl: {
+        rejectUnauthorized: false,
+      },
+      },
+      pool: {
+        min: 2,
+        max: 10
+      },
+      migrations: {
+        tableName: 'knex_migrations'
+      }
     }
-};
-
- // development: {
-  //   client: 'sqlite3',
-  //   connection: {
-  //     filename: './dev.sqlite3'
-  //   }
-  // },
-
-
-  // production: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     database: 'my_db',
-  //     user:     'username',
-  //     password: 'password'
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
-  //   migrations: {
-  //     tableName: 'knex_migrations'
-  //   }
-  // }
-
+  }
+    
 
