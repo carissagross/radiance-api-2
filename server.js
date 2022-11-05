@@ -23,9 +23,10 @@ app.get('/', (request, response) => {
   })
 })
 
-app.get('/affirmations', async(req, res) => {
+app.get('/api/v1/affirmations', async(req, res) => {
     const affirmationData = await knex.select().from('affirmations')
     res.status(200).json(affirmationData)
+    .catch(error => console.log(error))
 });
 
 // app.get('/api/v1/affirmations/:id', (req, res) => {
